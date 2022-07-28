@@ -1,0 +1,29 @@
+<html>
+    <head>
+      <title>Buscador de archivos</title>
+    </head>
+<body>
+    <form action="audio.php" method="post">
+    <input type="text" name="au" />
+    <input type="submit" name="btn" />
+</form>
+
+
+<?php
+
+    if(isset($_POST['au'])){
+        $au = $_POST['au'];
+    }
+
+    foreach(glob("source/*" . $au . ".mp3") as $file){
+        print_r($file);
+    }
+    
+    ?>
+
+    <audio controls>
+        <source src="http://localhost/<?php echo $file ?>"/>
+    </audio>
+
+</body>
+</html>
