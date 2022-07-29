@@ -1,29 +1,26 @@
 <html>
     <head>
-      <title>Buscador de archivos</title>
+        <title>Llamado de audio local con Glob</title>
     </head>
 <body>
     <form action="audio.php" method="post">
+    <label>Nombre o fragmento a buscar</label>
     <input type="text" name="au" />
     <input type="submit" name="btn" />
 </form>
 
-
 <?php
-
     if(isset($_POST['au'])){
         $au = $_POST['au'];
-    }
-
-    foreach(glob("source/*" . $au . ".mp3") as $file){
-        print_r($file);
-    }
-    
-    ?>
-
+        
+        foreach(glob("source/*" . $au . ".mp3") as $file){
+?>
     <audio controls>
         <source src="http://localhost/<?php echo $file ?>"/>
     </audio>
-
+<?php
+        }
+    }
+?>
 </body>
 </html>
